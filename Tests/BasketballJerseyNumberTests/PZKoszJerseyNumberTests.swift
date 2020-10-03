@@ -24,4 +24,25 @@ final class PZKoszJerseyNumberTests: XCTestCase {
             XCTAssertNil(PZKoszJerseyNumber(number: String(number)))
         }
     }
+    
+    func testStoresAndCanAccessNumber() {
+        XCTAssertTrue(PZKoszJerseyNumber(number: "0")?.number == "0")
+    }
+    
+    func testIsCustomStringConvertible() {
+        XCTAssertEqual("\(PZKoszJerseyNumber(number: "0")!)", "0")
+        XCTAssertEqual("\(PZKoszJerseyNumber(number: "00")!)", "00")
+        XCTAssertEqual("\(PZKoszJerseyNumber(number: "7")!)", "7")
+        XCTAssertEqual("\(PZKoszJerseyNumber(number: "10")!)", "10")
+    }
+    
+    func testIsEquatable() {
+        XCTAssertTrue(
+            PZKoszJerseyNumber(number: "0") == PZKoszJerseyNumber(number: "0")
+        )
+        
+        XCTAssertTrue(
+            PZKoszJerseyNumber(number: "0") != PZKoszJerseyNumber(number: "00")
+        )
+    }
 }
