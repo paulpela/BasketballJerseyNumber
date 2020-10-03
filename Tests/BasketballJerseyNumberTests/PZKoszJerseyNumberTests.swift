@@ -64,6 +64,10 @@ final class PZKoszJerseyNumberTests: XCTestCase {
         XCTAssertTrue(PZKoszJerseyNumber(number: "0")! < PZKoszJerseyNumber(number: "10")!)
     }
     
+    func testComparable00SmallerThan1() {
+        XCTAssertTrue(PZKoszJerseyNumber(number: "00")! < PZKoszJerseyNumber(number: "1")!)
+    }
+    
     func testComparable00SmallerThan10() {
         XCTAssertTrue(PZKoszJerseyNumber(number: "00")! < PZKoszJerseyNumber(number: "10")!)
     }
