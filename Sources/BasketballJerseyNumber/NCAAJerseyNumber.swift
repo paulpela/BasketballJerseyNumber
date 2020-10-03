@@ -11,14 +11,7 @@ public struct NCAAJerseyNumber: Equatable, BasketballJerseyNumber {
     public let number: String
     
     public init?(number: String) {
-        let leadingZeros = [Int](1...5).map({ "0\($0)"})
-        var convertedNumber: String
-        
-        if leadingZeros.contains(number) {
-            convertedNumber = "\(Int(number)!)"
-        } else {
-            convertedNumber = number
-        }
+        let convertedNumber = LeadingZeroFormatter.removeLeadingZero(in: number, highestIncluded: 5)
         
         guard NCAARuleNumberValidator.isValid(input: convertedNumber) else { return nil }
         
