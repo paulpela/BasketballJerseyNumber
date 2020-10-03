@@ -1,11 +1,12 @@
 public struct PZKoszJerseyNumber: Equatable {
     public let number: String
     
+    static let legalNumbers = {
+        return ["00"] + [Int](0...99).map({ String($0) })
+    }()
+    
     public init?(number: String) {
-        guard !number.isEmpty else { return nil }
-        guard number.count < 3 else { return nil }
-        guard Int(number) != nil else { return nil }
-        guard ![Int]((-9)...(-1)).map({ String($0) }).contains(number) else { return nil }
+        guard PZKoszJerseyNumber.legalNumbers.contains(number) else { return nil }
         
         self.number = number
     }
