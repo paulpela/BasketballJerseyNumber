@@ -8,6 +8,8 @@ final class PZKoszJerseyNumberTests: XCTestCase {
     
     func testFailsForStringsLongerThan2() {
         XCTAssertNil(PZKoszJerseyNumber(number: "123"))
+        XCTAssertNil(PZKoszJerseyNumber(number: "1234"))
+        XCTAssertNil(PZKoszJerseyNumber(number: "123456"))
     }
     
     func testFailsForNonNumericStrings() {
