@@ -24,9 +24,18 @@ public struct NCAAJerseyNumber: Equatable, BasketballJerseyNumber {
     }()
     
     public init?(number: String) {
-        guard NCAAJerseyNumber.legalNumbers.contains(number) else { return nil }
+        let leadingZeros = [Int](1...5).map({ "0\($0)"})
+        var convertedNumber: String
         
-        self.number = number
+        if leadingZeros.contains(number) {
+            convertedNumber = "\(Int(number)!)"
+        } else {
+            convertedNumber = number
+        }
+        
+        guard NCAAJerseyNumber.legalNumbers.contains(convertedNumber) else { return nil }
+        
+        self.number = convertedNumber
     }
 }
 

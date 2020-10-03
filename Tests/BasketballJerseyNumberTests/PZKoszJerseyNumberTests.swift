@@ -43,6 +43,15 @@ final class PZKoszJerseyNumberTests: XCTestCase {
         XCTAssertTrue(PZKoszJerseyNumber(number: "0")?.number == "0")
     }
     
+    func testConvertsLeadingZeroToSingleDigit() {
+        let testNumbers = [Int](1...9).map({ "0\($0)" })
+        
+        testNumbers.forEach { (testNumber) in
+            let convertedNumber = "\(Int(testNumber)!)"
+            XCTAssertEqual(PZKoszJerseyNumber(number: testNumber)?.number, convertedNumber)
+        }
+    }
+    
     // MARK: - protocol conformance
     
     func testIsCustomStringConvertible() {

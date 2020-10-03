@@ -44,6 +44,15 @@ final class NCAAJerseyNumberTests: XCTestCase {
         }
     }
     
+    func testConvertsLeadingZeroToSingleDigit() {
+        let testNumbers = [Int](1...5).map({ "0\($0)" })
+        
+        testNumbers.forEach { (testNumber) in
+            let convertedNumber = "\(Int(testNumber)!)"
+            XCTAssertEqual(NCAAJerseyNumber(number: testNumber)?.number, convertedNumber)
+        }
+    }
+    
     func testStoresAndCanAccessNumber() {
         XCTAssertTrue(NCAAJerseyNumber(number: "0")?.number == "0")
     }

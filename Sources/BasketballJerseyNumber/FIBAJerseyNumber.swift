@@ -6,9 +6,18 @@ public struct FIBAJerseyNumber: Equatable, BasketballJerseyNumber {
     }()
     
     public init?(number: String) {
-        guard FIBAJerseyNumber.legalNumbers.contains(number) else { return nil }
+        let leadingZeros = [Int](1...9).map({ "0\($0)"})
+        var convertedNumber: String
         
-        self.number = number
+        if leadingZeros.contains(number) {
+            convertedNumber = "\(Int(number)!)"
+        } else {
+            convertedNumber = number
+        }
+        
+        guard FIBAJerseyNumber.legalNumbers.contains(convertedNumber) else { return nil }
+        
+        self.number = convertedNumber
     }
 }
 
