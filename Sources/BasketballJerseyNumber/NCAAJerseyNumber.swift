@@ -10,19 +10,6 @@ import Foundation
 public struct NCAAJerseyNumber: Equatable, BasketballJerseyNumber {
     public let number: String
     
-    static let legalNumbers: [String] = {
-        var valid = ["0", "00"]
-        
-        valid += [Int](1...5).map({ String($0) })
-        valid += [Int](10...15).map({ String($0) })
-        valid += [Int](20...25).map({ String($0) })
-        valid += [Int](30...35).map({ String($0) })
-        valid += [Int](40...45).map({ String($0) })
-        valid += [Int](50...55).map({ String($0) })
-        
-        return valid
-    }()
-    
     public init?(number: String) {
         let leadingZeros = [Int](1...5).map({ "0\($0)"})
         var convertedNumber: String
@@ -33,7 +20,7 @@ public struct NCAAJerseyNumber: Equatable, BasketballJerseyNumber {
             convertedNumber = number
         }
         
-        guard NCAAJerseyNumber.legalNumbers.contains(convertedNumber) else { return nil }
+        guard NCAARuleNumberValidator.isValid(input: convertedNumber) else { return nil }
         
         self.number = convertedNumber
     }

@@ -1,10 +1,6 @@
 public struct PZKoszJerseyNumber: Equatable, BasketballJerseyNumber {
     public let number: String
     
-    static let legalNumbers = {
-        return ["00"] + [Int](0...99).map({ String($0) })
-    }()
-    
     public init?(number: String) {
         let leadingZeros = [Int](1...9).map({ "0\($0)"})
         var convertedNumber: String
@@ -15,7 +11,7 @@ public struct PZKoszJerseyNumber: Equatable, BasketballJerseyNumber {
             convertedNumber = number
         }
         
-        guard PZKoszJerseyNumber.legalNumbers.contains(convertedNumber) else { return nil }
+        guard FIBARuleNumberValidator.isValid(input: convertedNumber) else { return nil }
         
         self.number = convertedNumber
     }
