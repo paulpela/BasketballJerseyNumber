@@ -1,4 +1,4 @@
-public struct PZKoszJerseyNumber: Equatable {
+public struct PZKoszJerseyNumber: Equatable, BasketballJerseyNumber {
     public let number: String
     
     static let legalNumbers = {

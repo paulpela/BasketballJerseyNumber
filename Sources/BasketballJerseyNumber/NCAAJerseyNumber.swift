@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct NCAAJerseyNumber: Equatable {
+public struct NCAAJerseyNumber: Equatable, BasketballJerseyNumber {
     public let number: String
     
     static let legalNumbers: [String] = {
