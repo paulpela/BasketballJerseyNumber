@@ -1,18 +1,13 @@
-public struct PZKoszJerseyNumber: BasketballJerseyNumber, Hashable {
-    public let number: String
-    
-    static let legalNumbers = {
-        return ["00"] + [Int](0...99).map({ (item) -> String in
-            String(item)
-        })
+public struct PZKoszJerseyNumber {
+    static let illegalValues = {
+        [Int]((-9)...(-1)).map { String($0) }
     }()
     
-    init?(number: String) {
-        guard PZKoszJerseyNumber.legalNumbers.contains(number) else { return nil }
-        self.number = number
+    public init?(number: String) {
+        guard !number.isEmpty else { return nil }
+        guard number.count < 3 else { return nil }
+        guard Int(number) != nil else { return nil }
+        guard !PZKoszJerseyNumber.illegalValues.contains(number) else { return nil }
     }
 }
 
-extension PZKoszJerseyNumber: CustomStringConvertible {
-    public var description: String { number }
-}
