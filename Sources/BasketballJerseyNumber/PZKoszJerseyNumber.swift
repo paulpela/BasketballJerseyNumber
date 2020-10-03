@@ -16,3 +16,16 @@ extension PZKoszJerseyNumber: CustomStringConvertible {
     public var description: String { number }
 }
 
+extension PZKoszJerseyNumber: Comparable {
+    public static func < (lhs: PZKoszJerseyNumber, rhs: PZKoszJerseyNumber) -> Bool {
+        if lhs.number == "0" && rhs.number == "00" {
+            return true
+        }
+        
+        if lhs.number == "00" && rhs.number == "0" {
+            return false
+        }
+        
+        return Int(lhs.number)! < Int(rhs.number)!
+    }
+}

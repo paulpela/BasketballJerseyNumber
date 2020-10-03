@@ -2,6 +2,16 @@ import XCTest
 @testable import BasketballJerseyNumber
 
 final class PZKoszJerseyNumberTests: XCTestCase {
+    func testWorksForNumbers0To99And00() {
+        let testNumbers = {
+            return ["00"] + [Int](0...99).map({ String($0)} )
+        }()
+        
+        testNumbers.forEach { (number) in
+            XCTAssertNotNil(PZKoszJerseyNumber(number: number))
+        }
+    }
+    
     func testFailsForEmptyString() {
         XCTAssertNil(PZKoszJerseyNumber(number: ""))
     }
@@ -44,5 +54,21 @@ final class PZKoszJerseyNumberTests: XCTestCase {
         XCTAssertTrue(
             PZKoszJerseyNumber(number: "0") != PZKoszJerseyNumber(number: "00")
         )
+    }
+    
+    func testComparable0SmallerThan00() {
+        XCTAssertTrue(PZKoszJerseyNumber(number: "0")! < PZKoszJerseyNumber(number: "00")!)
+    }
+    
+    func testComparable0SmallerThan10() {
+        XCTAssertTrue(PZKoszJerseyNumber(number: "0")! < PZKoszJerseyNumber(number: "10")!)
+    }
+    
+    func testComparable00SmallerThan10() {
+        XCTAssertTrue(PZKoszJerseyNumber(number: "00")! < PZKoszJerseyNumber(number: "10")!)
+    }
+    
+    func testComparable5SmallerThan10() {
+        XCTAssertTrue(PZKoszJerseyNumber(number: "5")! < PZKoszJerseyNumber(number: "10")!)
     }
 }

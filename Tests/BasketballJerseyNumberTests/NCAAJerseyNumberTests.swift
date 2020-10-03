@@ -68,4 +68,20 @@ final class NCAAJerseyNumberTests: XCTestCase {
             NCAAJerseyNumber(number: "5") != NCAAJerseyNumber(number: "15")
         )
     }
+    
+    func testComparable0SmallerThan00() {
+        XCTAssertTrue(NCAAJerseyNumber(number: "0")! < NCAAJerseyNumber(number: "00")!)
+    }
+    
+    func testComparable0SmallerThan10() {
+        XCTAssertTrue(NCAAJerseyNumber(number: "0")! < NCAAJerseyNumber(number: "10")!)
+    }
+    
+    func testComparable00SmallerThan10() {
+        XCTAssertTrue(NCAAJerseyNumber(number: "00")! < NCAAJerseyNumber(number: "10")!)
+    }
+    
+    func testComparable5SmallerThan10() {
+        XCTAssertTrue(NCAAJerseyNumber(number: "5")! < NCAAJerseyNumber(number: "10")!)
+    }
 }
