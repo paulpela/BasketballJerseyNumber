@@ -9,4 +9,6 @@ import Foundation
 
 public protocol BasketballJerseyNumber {
     var number: String { get }
+    
+    init?(number: String)
 }
