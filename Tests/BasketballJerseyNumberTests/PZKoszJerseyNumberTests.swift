@@ -2,6 +2,8 @@ import XCTest
 @testable import BasketballJerseyNumber
 
 final class PZKoszJerseyNumberTests: XCTestCase {
+    // MARK: - initializing
+    
     func testWorksForNumbers0To99And00() {
         let testNumbers = {
             return ["00"] + [Int](0...99).map({ String($0)} )
@@ -35,9 +37,13 @@ final class PZKoszJerseyNumberTests: XCTestCase {
         }
     }
     
+    // MARK: - properties
+    
     func testStoresAndCanAccessNumber() {
         XCTAssertTrue(PZKoszJerseyNumber(number: "0")?.number == "0")
     }
+    
+    // MARK: - protocol conformance
     
     func testIsCustomStringConvertible() {
         XCTAssertEqual("\(PZKoszJerseyNumber(number: "0")!)", "0")
@@ -55,6 +61,8 @@ final class PZKoszJerseyNumberTests: XCTestCase {
             PZKoszJerseyNumber(number: "0") != PZKoszJerseyNumber(number: "00")
         )
     }
+    
+    // MARK: - Comparable
     
     func testComparable0SmallerThan00() {
         XCTAssertTrue(PZKoszJerseyNumber(number: "0")! < PZKoszJerseyNumber(number: "00")!)
