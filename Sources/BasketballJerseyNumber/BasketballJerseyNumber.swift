@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct BasketballJerseyNumber: JerseyNumber {
+public struct BasketballJerseyNumber: JerseyNumber, Hashable {
     public let number: String
     
     public init?(number: String) {
