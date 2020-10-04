@@ -1,3 +1,5 @@
+![Latest release badge](https://badgen.net/github/release/paulpela/BasketballJerseyNumber)
+
 # BasketballJerseyNumber
 
 Custom data type for representing basketball player numbers with additional validation rules.
