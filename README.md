@@ -1,4 +1,4 @@
-![Latest release badge](https://badgen.net/github/release/paulpela/BasketballJerseyNumber)
+![Latest release badge](https://badgen.net/github/release/paulpela/BasketballJerseyNumber) ![Twitter follow badge](https://badgen.net/twitter/follow/paulpela)
 
 # BasketballJerseyNumber
 
