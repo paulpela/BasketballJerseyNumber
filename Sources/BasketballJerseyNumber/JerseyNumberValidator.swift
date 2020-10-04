@@ -39,3 +39,13 @@ struct FIBARuleNumberValidator: JerseyNumberValidator {
         FIBARuleNumberValidator.legalNumbers.contains(input)
     }
 }
+
+struct FIBA4To15RuleNumberValidator: JerseyNumberValidator {
+    static let legalNumbers = {
+        return [Int](4...15).map({ String($0) })
+    }()
+    
+    static func isValid(input: String) -> Bool {
+        FIBA4To15RuleNumberValidator.legalNumbers.contains(input)
+    }
+}
