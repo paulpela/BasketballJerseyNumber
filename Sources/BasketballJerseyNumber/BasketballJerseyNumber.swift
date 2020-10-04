@@ -7,8 +7,10 @@
 
 import Foundation
 
-public struct BasketballJerseyNumber: JerseyNumber, Hashable {
+public struct BasketballJerseyNumber: JerseyNumber, Hashable, CustomStringConvertible {
     public let number: String
+    
+    public var description: String { number }
     
     public init?(number: String) {
         self.init(number: number, validationRules: [])

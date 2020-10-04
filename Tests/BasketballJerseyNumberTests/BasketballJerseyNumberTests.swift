@@ -69,4 +69,16 @@ final class BasketballJerseyNumberTests: XCTestCase {
             XCTAssertNil(BasketballJerseyNumber(number: input, validationRules: [.noLeadingZeros]))
         }
     }
+    
+    func testIsCustomStringConvertible() {
+        zeroTo99and00.forEach { (input) in
+            XCTAssertEqual("\(BasketballJerseyNumber(number: input)!)", input)
+        }
+    }
+    
+    func testIsHashable() {
+        zeroTo99and00.forEach { (input) in
+            XCTAssert(BasketballJerseyNumber(number: input)! == BasketballJerseyNumber(number: input)!)
+        }
+    }
 }
