@@ -22,6 +22,12 @@ You can use `init?(number: String, validationRules: Set<JerseyNumberValidationRu
 
 `.noLeadingZeros` - returns `nil` for values like 01...09
 
+### Utility methods
+
+`copy(usingValidationRules rules: Set<JerseyNumberValidationRule>) -> BasketballJerseyNumber?` - makes a copy by following all provided rules.
+
+`follows(rules: Set<JerseyNumberValidationRule>) -> Bool` - verifies the number against a set of provided rules.
+
 ## Protocol conformance
 
 Conforms to `Hashable` and `CustomStringConvertible`.
