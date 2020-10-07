@@ -34,6 +34,25 @@ public struct BasketballJerseyNumber: JerseyNumber, Hashable, CustomStringConver
     public func copy(usingValidationRules rules: Set<JerseyNumberValidationRule>) -> T? {
         BasketballJerseyNumber(number: self.number, validationRules: rules)
     }
+    
+    public func follows(rules: Set<JerseyNumberValidationRule>) -> Bool {
+        guard !rules.isEmpty else { return true }
+        
+        var result = true
+        
+        rules.forEach { (rule) in
+            switch rule {
+            case .doubleZeroNotAllowed:
+                if number == "00" { result = false }
+            case .noLeadingZeros:
+                if number != "00" && number.count == 2 && number.hasPrefix("0") { result = false }
+            case .only0to5:
+                if number.contains6to9 { result = false }
+            }
+        }
+        
+        return result
+    }
 }
 
 extension BasketballJerseyNumber: Codable {

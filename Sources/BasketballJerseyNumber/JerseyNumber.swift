@@ -21,4 +21,6 @@ public protocol JerseyNumber {
     init?(number: String, validationRules: Set<JerseyNumberValidationRule>)
     
     func copy(usingValidationRules rules: Set<JerseyNumberValidationRule>) -> T?
+    
+    func follows(rules: Set<JerseyNumberValidationRule>) -> Bool
 }
