@@ -8,6 +8,8 @@
 import Foundation
 
 public struct BasketballJerseyNumber: JerseyNumber, Hashable, CustomStringConvertible {
+    public typealias T = BasketballJerseyNumber
+    
     public let number: String
     
     public var description: String { number }
@@ -29,7 +31,9 @@ public struct BasketballJerseyNumber: JerseyNumber, Hashable, CustomStringConver
         self.number = number
     }
     
-    
+    public func copy(usingValidationRules rules: Set<JerseyNumberValidationRule>) -> T? {
+        BasketballJerseyNumber(number: self.number, validationRules: rules)
+    }
 }
 
 extension BasketballJerseyNumber: Codable {

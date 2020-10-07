@@ -12,9 +12,13 @@ public enum JerseyNumberValidationRule {
 }
 
 public protocol JerseyNumber {
+    associatedtype T
+    
     var number: String { get }
     
     init?(number: String)
     
     init?(number: String, validationRules: Set<JerseyNumberValidationRule>)
+    
+    func copy(usingValidationRules rules: Set<JerseyNumberValidationRule>) -> T?
 }
